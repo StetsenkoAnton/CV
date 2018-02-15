@@ -1,0 +1,84 @@
+// Typography
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.h {
+    margin: 0 0 .5em;
+    font-weight: bold;
+}
+
+h1,
+.h1 {
+    font-size: 2.5rem; // 40px
+
+    @include media('>=desktop') {
+        font-size: 2.4rem; // 60px
+    }
+    @include media('>=1400px') {
+        font-size: 3.2rem; // 80px
+    }
+}
+
+h2,
+.h2 {
+    font-size: 1.5rem; // 30px
+    @include media('>=desktop') {
+        font-size: 1.64rem; // 41px
+    }
+}
+
+h3,
+.h3 {
+    font-size: 1.25rem; // 25px
+
+    @include media('>=desktop') {
+        font-size: 1.4rem; // 35px
+    }
+}
+
+h4,
+.h4 {
+    font-size: 1.1rem; // 22px
+
+    @include media('>=desktop') {
+        font-size: 1.2rem; // 30px
+    }
+}
+
+h5,
+.h5 {
+    font-size: 1rem; // 20/25px
+}
+
+h6,
+.h6 {
+    font-size: .8rem; // 16px
+
+    @include media('>=desktop') {
+        font-size: .72rem; // 18px
+    }
+}
+
+p {
+    margin: 0 0 1.5em;
+}
+
+a {
+    text-decoration: none;
+    color: $col-brand1;
+    transition: color $as, background-color $as, opacity $as;
+    &:hover,
+    &:focus {
+        color: $col-brand2;
+    }
+}

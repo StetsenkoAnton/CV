@@ -1,0 +1,155 @@
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// ligatured operators ≥ ≤
+
+@import 'vendors/include-media';
+@import 'vendors/normalize';
+@import 'vendors/icons';
+
+@import 'base/variables';
+@import 'base/functions';
+@import 'base/helpers';
+@import 'base/reset';
+@import 'base/typography';
+
+
+dl {
+  dt, dd {
+    display: inline;
+  }
+}
+
+dt {
+  font-weight: 600;
+  &:after {
+    content: ':';
+  }
+  .resume_content & {
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 1em;
+    }
+  }
+}
+
+dd {
+  margin: 0;
+  &:after {
+    content: '\A';
+    white-space: pre;
+  }
+}
+
+
+address {
+  font-style: normal;
+}
+
+.resume {
+  max-width: 794px;
+  padding: 20px;
+  background-color: $col-bg;
+  @include media('>=tablet') {
+    box-shadow: 0 10px 10px rgba(#000, .75);
+    margin: 10px auto;
+    padding: 37px 28px 37px 56px;
+  }
+}
+
+.resume_head {
+  font-size: 1.2rem;
+  @include media('>=phone') {
+    display: flex;
+  }
+}
+
+.person_info {
+  flex: 0 0 auto;
+  @include media('>=phone') {
+    padding-left: 1em;
+  }
+  a {
+    color: inherit;
+  }
+}
+
+.inline-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+  li {
+    display: inline;
+    &:after {
+      content: ','
+    }
+    &:last-child {
+      &:after {
+        content: '.'
+      } 
+    }
+  }
+}
+
+.aside-title {
+  text-align: center;
+}
+
+.experience-info {
+  border: 1px solid #000;
+  border-bottom: none;
+  font-size: .875rem;
+}
+
+.company {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.company_name {
+  flex: 0 0 100%;
+  border-bottom: 1px solid #000;
+  padding: .5em;
+  
+}
+
+.company_position {
+  flex: 0 0 30%;
+  border-bottom: 1px solid #000;
+  padding: .5em;
+  strong {
+    display: block;
+    margin-bottom: 1em;
+  }
+}
+
+.company_responsibility {
+  flex: 0 0 70%;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  text-align: left;
+  padding: .5em;
+  ul {
+    margin: 0;
+    padding-left: 1em;
+  }
+}

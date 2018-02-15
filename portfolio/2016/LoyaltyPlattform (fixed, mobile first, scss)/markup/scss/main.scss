@@ -1,0 +1,1589 @@
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// include files
+
+@import 'vendors/include-media';
+@import 'vendors/normalize';
+@import 'base/variables'; // all variables
+@import 'vendors/fonts'; // include fonts Cabin
+@import 'vendors/icons'; // include icon-font GLYPHICONS
+@import 'vendors/jcf'; // basic custom Select and scrollbars styles
+@import 'vendors/fancybox'; // basic popups styles
+
+@import 'base/functions';
+@import 'base/mixins';
+@import 'base/helpers';
+@import 'base/reset';
+@import 'base/typography'; // basic typography styles
+@import 'base/forms'; // basic forms styles
+
+/* ---------------------------------------------------------
+  1. General reset
+  2. Common site styles
+      Button styles
+      Carousel styles
+      Lightbox styles
+      Radio button styles
+      Error styles
+      Accordion styles
+      Loader styles
+      Button lightbox open styles
+  3. All popups stules
+      popup for section "KUND" and "RELATIONER" stules
+      popup for section "KUND" stules
+      popup for section "FORDON" stules
+      popup for button "Sök fordon" stules
+      popups for section "ERBJUDANDEN" stules
+      popups for section "PRODUKTER" stules
+      popup for button "Ny tjänst" stules
+      popup for button "Logg" stules
+      popup for button "Skicka app-länk" stules
+      popups for section "Överblick FÖRSÄKRINGAR" stules
+  4. PAGE Section styles
+      Section "Överblick FÖRSÄKRINGAR" styles
+      Button wraper styles
+      Section "FORDON" styles
+      Section "FORDON", section "ERBJUDANDEN", section "PRODUKTER" styles
+      Section "GRAPH IMG" styles
+      Section "PERSONLIGHETSTYP" styles
+      Section "RELATIONER" styles
+      Section "KUND" styles
+  5. Custom form styles
+   ---------------------------------------------------------*/
+
+/* ---------------------------------------------------------
+   1. General reset
+   ---------------------------------------------------------*/
+html{
+  min-height: 100%;
+  min-width: 100%;
+  background: $bggrad2 url(../images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body {
+  background: transparent;
+  min-height: 100%;
+  height: 100%;
+  min-width: 100%;
+  width: 1741px;
+  position: relative;
+  height: 100%;
+  overflow: visible;
+}
+
+#wrapper {
+  width: 1741px;
+  min-width: 1741px;
+  padding: 33px 30px;
+  height: 100%;
+  overflow: hidden;
+  background: $bggrad2 url(../images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  @include media('>=1741px') {
+    background: transparent;
+  }
+}
+
+.wrap-section {
+  background: linear-gradient(119deg, $bggrad2 2%, $bggrad1 80%);
+  box-shadow: inset 1px 1px 1px 2px rgba(0, 0, 0, 0.5), inset -1px -1px 1px 2px rgba(255, 255, 255, 0.3);
+  padding: 16px 27px;
+  border-radius: $br;
+}
+
+ul:not([id]):not([class]) {
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;
+  li {
+    position: relative;
+    padding-left: 1em;
+    margin-bottom: 5px;
+    &:before {
+      content: '\00B7';
+      font-size: 16px;
+      position: absolute;
+      top: -5px;
+      left: 5px;
+      color: inherit;
+    }
+  }
+}
+
+dl:not([id]):not([class]) {
+  dt {
+    display: inline;
+    margin-right: .3em;
+  }
+  dd{
+    display: inline;
+    margin: 0;
+    &:after {
+      content: '\A';
+      white-space: pre;
+    }
+  }
+}
+
+.line {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 16px;
+  h1 {
+    margin-left: 7px;
+  }
+  >* {
+    margin-left: 19px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  &.top-line {
+    >* {
+      height: 264px;
+      h1 {
+        margin-left: 0;
+      }
+    }
+  }
+  .w49 {
+    width: 48.5%;
+    position: relative;
+    padding-bottom: 50px;
+    .wrap-section {
+      padding-right: 6px;
+    }
+  }
+  .w51 {
+    width: calc(51.5% - 32px);
+    position: relative;
+    height: 100%;
+    margin-left: 32px;
+  }
+}
+
+.row {
+  display: flex;
+}
+
+.glyphicons {
+  color: $txt;
+  font-size: 15px;
+  padding-top: 6px;
+  display: inline-block;
+  transition: color $as, background-color $as, background $as;
+  &:before{
+    vertical-align: top;
+    text-align: center;
+  }
+}
+
+.tel {
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  transition: color $as;
+  &:hover {
+    color: $btn;
+  }
+}
+
+.close {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 15px;
+  left: 20px;
+  &:after, &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 14px;
+    background-color: #7d7d7d;
+    transition: transform $as;
+  }
+  &:after{
+    left: 5px;
+    transform: rotate(40deg);
+  } 
+  &:before {
+    right: 5px;
+    transform: rotate(-40deg);
+  }
+  &:hover {
+    &:after{
+      transform: rotate(90deg);
+      background-color: $btn;
+    }
+    &:before {
+      transform: rotate(-90deg);
+      background-color: $btn;
+    }
+  }
+  &.escape {
+    position: static;
+  }
+}
+
+/* ---------------------------------------------------------
+   3. Сommon site styles
+   ---------------------------------------------------------*/
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: $txt;
+  padding: 7px 19px;
+  border-radius: 30px;
+  background-color: $btn;
+  box-shadow: inset -1px -1px 1px 1px rgba(0, 0, 0, 0.5), inset 1px 1px 1px 1px rgba(255, 255, 255, 0.5);
+  b {
+    font-size: 11px;
+    font-weight: 500;
+    margin-right: 5px;
+  }
+  &:hover {
+    background-color: darken($btn, 14%);
+  }
+  &:active {
+    box-shadow: none;
+    transform: translateY(1px);
+  }
+}
+
+.logg {
+  padding: 7px 25px;
+}
+
+.add {
+  width: 24px;
+  height: 24px;
+  min-width: auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  &:after {
+    content: '\271A';
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: normal;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Carousel styles */
+div.carousel {
+  position: relative;
+  div.mask {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    div.slideset {
+      width: 99999px;
+      float: left;
+    }
+    div.slide {
+      float: left;
+    }
+  }
+  .btn-prev, .btn-next {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px $txt3;
+    background: $txt linear-gradient(-35deg, rgba($txt3, .81) 50%, $txt 100%);
+    top: 50%;
+    transform: translateY(-50%);
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      display: inline-block;
+      width: 2px;
+      border-radius: 2px;
+      height: 9px;
+      background-color: $txt;
+      transition: background-color $as;
+    }
+    &:before {
+      box-shadow: 0 1px 1px $txt3;
+      top: 10px;
+    }
+    &:hover:after, &:hover:before {
+      background-color: $btn;
+    }
+    &:active {
+      background: $txt linear-gradient(-35deg, rgba($txt3, .81), rgba($txt3, .81));
+    }
+  }
+  .btn-prev {
+    left: -28px;
+    &:after, &:before {
+      left: 9px;
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+    }
+  }
+  .btn-next {
+    right: -16px;
+    &:after, &:before {
+      left: 11px;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.slide {
+  margin-right: 14px;
+  &:last-child {
+    margin-right: 0;
+  }
+  .lightbox {
+    width: 175px;
+    display: block;
+    padding: 8px 9px;
+    background-color: $bggray;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    color: $txt;
+    &:hover {
+      color: $btn;
+    }
+    &:first-child {
+      margin-bottom: 5px;
+    }
+    &:only-child {
+      margin-bottom: 0;
+    }
+    span {
+      display: block;
+    }
+  }
+}
+
+/* Lightbox styles */
+.popup-holder {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+}
+
+.popup-box {
+  position: absolute;
+  padding: 44px 54px;
+  z-index: 1000;
+  overflow: hidden;
+  background: rgba($bgpopup, .96);
+  box-shadow: inset rgba(255,255,255,.5) -3px -3px 8px, inset rgba(255,255,255,.9) 3px 3px 8px,  0px 0px 243px 0px rgba(0, 0, 0, 0.4);
+  color: $txt3;
+  border-radius: $brpopup;
+  .jcf-scrollbar-vertical {
+    right: -25px;
+    background: $scroll;
+  }
+}
+/* Radio button styles */
+.radio-view {
+  display: inline-block;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #000;
+  border-radius: 3px;
+}
+
+.radio {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9999px;
+  &:checked {
+    + .radio-view {
+      &:after, &:before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 2px;
+        background-color: #000;
+      }
+      &:after {
+        top: 4px;
+        left: 2px;
+        height: 5px;
+        transform: rotate(-45deg);
+      }
+      &:before {
+        top: 1;
+        left: 6px;
+        height: 9px;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+/* error styles */
+.form-error {
+  .radio-view {
+    border-color: $error;
+  }
+}
+
+/* accordion basic styles */
+.accordion {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    display: flex;
+    align-items: stretch;
+    &.active {
+      .glyphicons-chevron-up {
+        transform: rotate(180deg);
+      }
+    }
+    &:first-child .slide{
+      border-top: 1px solid $scroll;
+    }
+  }
+  .slide {
+    // box-sizing: border-box;
+    overflow: hidden;
+    min-height: 90px;
+    border-bottom: 1px solid $scroll;
+    .box {
+      padding-bottom: 10px;
+      >*:last-child {
+        margin-bottom: 6px;
+      }
+    }
+  }
+  
+  .nav {
+    min-width: 50px;
+    width: 50px;
+    background-color: rgba($btn, .08);
+  }
+  .opener, .delete {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: $txt5;
+    font-size: 10px;
+    padding: 7px 0;
+    .glyphicons {
+      color: $txt5;
+      display: block;
+      margin: 0 auto;
+      transition: transform $as;
+      transform-origin: 50% 55%;
+      &:before {
+        vertical-align: baseline;
+      }
+    }
+  }
+  .opener {
+    background-color: rgba($btn, .08);
+  }
+}
+
+/* Loader styles */
+.loading {
+  position: relative;
+ &:before {
+    content: '';
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(0,0,0, .5);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: $br;
+  }
+ &:after {
+    content: url(../images/loader1.png);
+    display: inline-block;
+    position: absolute;
+    z-index: 101;
+    left: calc(50% - 17px);
+    top: calc(50% - 17px);
+    animation: rotate 1.7s linear infinite;
+    transform-origin: 50% 50%;
+    height: 35px;
+    width: 35px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+/* button lightbox open styles */
+.relationship, .client{
+  .btn {
+    border-radius: 50%;
+    background-color: $txt5;
+    height: 28px;
+    width: 28px;
+    min-width: auto;
+    padding: 0;
+    margin-right: 10px;
+    text-align: center;
+    transition: background-color $as;
+    &:hover {
+      background-color: $btn;
+    }
+  }
+}
+
+/* ---------------------------------------------------------
+  3. All popups stules
+  ---------------------------------------------------------*/
+
+/* popup section "KUND" and "RELATIONER" stules */
+.first-client-box, .client-box {
+  width: 455px;
+  max-height: 570px;
+  top: 132px;
+  left: 104px;
+  font-size: 14px;
+  .jcf-scrollable {
+    max-height: 485px !important;
+  }
+  .upper {
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+  .day-left {
+    font-size: 14px;
+    font-weight: 700;
+    color: $txt4;
+    margin-bottom: 40px;
+  }
+  address {
+    margin-bottom: 40px;
+    p {
+      margin-bottom: 2px;
+    }
+    a {
+      font-size: 13px;
+    }
+  }
+  time {
+    margin-bottom: 18px;
+    display: block;
+  }
+  a:hover {
+    color: darken($btn, 14%);
+  }
+}
+
+/* popup section "KUND" stules */
+.client-box {
+  left: 420px;
+}
+
+/* popup section "FORDON" stules */
+.auto-box {
+  width: 1200px;
+  max-height: 680px;
+  top: 132px;
+  left: 104px;
+  .jcf-scrollable {
+    max-height: 570px !important;
+    font-size: 13px;
+  }
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  em {
+    font-size: 14px;
+    display: inline-block;
+    width: 46%;
+    line-height: 1.2857;
+  }
+  h3 {
+    color: $btn;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 32px;
+    &:first-child {
+      margin-top: 22px;
+    }
+  }
+  .notate {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 10px;
+    a {
+      color: inherit;
+      &:hover {
+        color: $btn;
+      }
+    }
+  }
+}
+
+.features-cars {
+  display: flex;
+  &>* {
+    width: 28.5%;
+    margin-right: 60px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.defin-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap:wrap;
+  font-size: 13px;
+  margin: 3px 0 5px;
+  dt, dd {
+    width: 50%;
+    margin: 0 0 3px
+  }
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    text-align: right;
+  }
+}
+
+.empty {
+  &:after {
+    content: '\00A0';
+  }
+}
+
+/* popup for button "Sök fordon" stules */
+.search-auto-box {
+  width: 290px;
+  max-height: 150px;
+  top: 417px;
+  left: 500px;
+  padding: 35px 30px 45px 40px;
+  border-radius: $br;
+  h2 {
+    font-weight: bold;
+    text-transform: none;
+    margin-bottom: 6px
+  }
+  input {
+    width: 120px;
+    margin-right: 12px;
+  }
+  .btn {
+    margin: 0;
+    width: auto;
+    padding: 8px 29px;
+    min-width: auto;
+  }
+  span.error-massage {
+    top: auto;
+    bottom: -20px;
+  }
+  .form-error {
+    input {
+      color: $inputerrore;
+      @include placeholder {
+        color: $inputerrore;
+      }
+    }
+  }
+}
+
+/* popups for section "ERBJUDANDEN" stules */
+.deals-box {
+  width: 500px;
+  max-height: 510px;
+  top: 195px;
+  left: 140px;
+  padding: 39px 51px 30px;
+  .jcf-scrollable {
+    max-height: 345px !important;
+  }
+  h3 {
+    margin-bottom: 7px;
+  }
+  .defin-list {
+    align-items: flex-end;
+    justify-content: flex-start;
+    dt, dd {
+      width: 45%;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      &:nth-child(n+5) {
+        font-weight: 500;
+      }
+    }
+    dt {
+      box-sizing: bordr-box;
+      padding-right: 15px;
+    }
+    dd {
+      text-align: left;
+    }
+  }
+  .btn {
+    margin: 13px 0 10px -5px;
+    padding: 7px 17px;
+  }
+  .notate {
+    color: #595959;
+    font-size: 11px;
+    display: block;
+  }
+}
+
+/* popups for section "PRODUKTER" stules */
+.product-box {
+  width: 500px;
+  max-height: 365px;
+  top: 353px;
+  left: 104px;
+  padding: 40px 55px;
+  .jcf-scrollable {
+    max-height: 220px !important;
+  }
+  h3 {
+    margin-bottom: 1px;
+    + span {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 13px;
+    }
+  }
+}
+
+.document-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid $scroll;
+  padding: 20px 0 12px;
+  font-size: 13px;
+  margin: 0;
+  box-sizing: border-box;
+  &:first-child {
+    padding: 13px 0 12px;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+  dt {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  dd {
+    margin: 0;
+    width: 60%;
+    margin-bottom: 10px;
+  }
+  time b {
+    margin-right: .6em;
+  }
+  .btn {
+    min-width: auto;
+    margin-right: 45px;
+    padding: 9px 20px;
+  }
+}
+
+/* popup for button "Ny tjänst" stules */
+.search-serv-box {
+  width: 470px;
+  max-height: 680px;
+  bottom: 105px;
+  left: 104px;
+  padding: 39px 52px 30px;
+  h3 {
+    margin-bottom: 8px;
+  }
+  h5 {
+    margin-bottom: 0;
+  }
+  form {
+    padding-top: 42px;
+    margin-bottom: 25px;
+    label {
+      width: 162px;
+      margin-right: 40px;
+      &:last-child {
+        margin-right: 0;
+      }
+      input {
+        width: 100%;
+      }
+    }
+    .row {
+      margin-bottom: 14px;
+    }
+    .error-massage {
+      top: 21px;
+      left: -2px;
+    }
+    &.form-error {
+      input {
+        color: $inputerrore;
+        @include placeholder {
+          color: $inputerrore;
+        }
+      }
+    }
+  }
+  .btn {
+    color: $txt !important;
+    padding: 8px 23px;
+    width: auto;
+    display: block;
+    position: relative;
+    bottom: -33px;
+    left: 75px;
+  }
+}
+
+.serv-list {
+  margin: -14px 0 0;
+  font-weight: 700;
+  font-size: 13px;
+  dt, dd {
+    display: inline-block;
+    margin: 0 0 4px;
+  }
+  dt {
+    width: 55%;
+    &:first-child {
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      margin-bottom: 13px;
+    }
+  }
+  dd {
+    width: 43%;
+  &:nth-child(2) {
+    font-size: 22px;
+    margin-bottom: 13px;
+    letter-spacing: 2px;
+      b {
+        font-size: 44px;
+      }
+    }
+  }
+}
+
+/* popup for button "Logg" stules */
+.log-box {
+  width: 885px;
+  max-height: 480px;
+  bottom: 210px;
+  left: 104px;
+  padding: 40px 52px 30px;
+  .jcf-scrollable {
+    max-height: 360px !important;
+  }
+  h3 {
+    margin-bottom: 12px;
+  }
+  .accordion-wrap {
+    width: 50%;
+    margin-right: 50px;
+  }
+  .jcf-textarea {
+    width: 100%;
+    .jcf-scrollable-wrapper {
+      width: 100% !important;
+      .jcf-scrollbar.jcf-inactive {
+        display: none;
+      }
+      .jcf-scrollbar-vertical {
+        right: -5px;
+        height: 100% !important;
+      }
+    }
+    .jcf-resize {
+      display: none;
+    }
+  }
+  .accordion {
+    width: 100% !important;
+    color: $txt5;
+    h4 {
+      font-weight: 700;
+      margin-top: 10px;
+      color: $txt5;
+    }
+    time {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+  }
+  .log-form {
+     width: 50%;
+     line-height: 1.5;
+    fieldset {
+      position: relative;
+    }
+    textarea {
+      width: 100% !important;
+      height: 300px !important;
+      padding: 52px 17px 17px;
+    }
+  }
+  .time-create {
+    color: $txt5;
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    font-size: 11px;
+    z-index: 100;
+  }
+  .btn-form {
+    text-align: right;
+    padding: 27px 0;
+  }
+  input[type="submit"] {
+    margin-left: 20px;
+    padding: 9px 34px 7px;
+  }
+  .escape {
+    display: inline;
+    background-color: $txt5;
+    padding: 9px 30px 7px;
+    &:after, &:before {
+      display: none;
+    }
+  }
+}
+
+/* popup for button "Skicka app-länk" stules */
+.attach-box {
+  width: 280px;
+  bottom: 105px;
+  left: 575px;
+  max-height: 680px;
+  overflow: auto;
+  border-radius: $br;
+  padding: 35px 40px 30px;
+  .jcf-scrollable-wrapper {
+    width: 200px !important;
+  }
+  .jcf-scrollable {
+    max-height: 500px !important;
+  }
+  h3 {
+    font-weight: bold;
+    margin-bottom: 1px;
+  }
+  .repeter {
+    margin-top: 9px;
+  }
+}
+
+.phone-form {
+  text-align: right;
+  .form-wrap {
+    position: relative;
+    margin-bottom: 35px;
+  }
+  fieldset {
+    text-align: left;
+  }
+  label {
+    font-size: 10px;
+    color: $label;
+    input {
+      display: block;
+      margin-top: 4px;
+      width: 165px;
+    }
+  }
+  .add {
+    position: absolute;
+    right: 2px;
+    bottom: 5px;
+    max-width: 24px;
+  }
+  span.error-massage {
+    top: auto;
+    bottom: -20px;
+  }
+  input[type="submit"] {
+    display: inline-block;
+    position: relative;
+    padding: 9px 25px 7px;
+    right: -18px;
+  }
+}
+
+/* popups for section "Överblick FÖRSÄKRINGAR" stules */
+.insurance-box, .buy-box {
+  width: 440px;
+  top: 420px;
+  left: 1020px;
+  padding: 30px 48px;
+  font-size: 14px;
+  font-weight: 500;
+  h3 {
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  form {
+    text-align: right;
+    &.form-error {
+      color: $dis;
+      .btn {
+        background-color: $disbtn;
+      }
+    }
+    .btn {
+      position: relative;
+      right: -10px;
+      padding: 7px 27px;
+    }
+  }
+  fieldset {
+    text-align: left;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  span.error-massage {
+    top: auto;
+    bottom: -20px;
+  }
+  .row {
+    flex-wrap: nowrap;
+    margin-bottom: 8px;
+    &:first-child {
+      margin-bottom: 14px;
+      font-weight: 600;
+      label {
+        text-align: right;
+        width: 100px;
+        margin-bottom: 9px;
+        letter-spacing: .5px;
+        .radio-view {
+          float: left;
+        }
+      }
+      .wrap2 {
+        min-width: auto;
+        width: auto;
+        label {
+          display: block;
+          margin-right: 0;
+        }
+      }
+    }
+    p {
+      margin-right: 16px;
+      margin-bottom: 0;
+    }
+  }
+  .wrap1 {
+    display: flex;
+    width: 210px;
+  }
+  .wrap2 {
+    label {
+      display: inline-block;
+      width: 50px;
+      margin-right: 28px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  label span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .radio-view {
+    margin-right: 2px;
+  }
+}
+
+.buy-box {
+  width: 357px;
+  padding: 37px 46px 27px;
+  h3 {
+    margin-bottom: 13px;
+  }
+  .radio-view {
+    margin-right: 8px;
+  }
+  dd, dt {
+    line-height: 23px;
+  }
+  dl {
+    margin: 0;
+    dt {
+      display: inline-block !important;
+      width: 130px;
+    }
+    dd {
+      vertical-align: top;
+      letter-spacing: -.6px;
+    }
+  }
+  b {
+    font-size: 18px;
+  }
+  form .btn {
+    right: -10px;
+    padding: 9px 32px;
+  }
+}
+
+/*
+  4. PAGE Section styles
+*/
+
+/* section "KUND" styles */
+.client {
+  min-width: 300px;
+  h1 {
+    margin-bottom: 20px;
+  }
+  form {
+    margin-bottom: 38px;
+  }
+  .row {
+    margin-bottom: 46px;
+    align-items: flex-start;
+  }
+}
+
+.contact-box{
+  .contact {
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: bold;
+  }
+}
+
+.tel {
+  font-size: 11.5px;
+}
+
+.operator {
+  width: 100%;
+  margin-bottom: 38px;
+  thead {
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  .online {
+    font-weight: 600;
+  }
+  tbody td {
+    
+    padding: 3px 0;
+  }
+}
+
+.traffic {
+  text-align: right;
+  padding-right: 2px;
+  .green, .yellow, .red {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, $txt, $txt3);
+    border-radius: 50%;
+    padding: 3px;
+    margin: 0 7px;
+  }
+  .led {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+  .green {
+    &.on{
+      box-shadow: 0 0 22px 3px $green1;
+      .led {
+        background-color: $green1;
+        background-image: radial-gradient( 60% 25%, circle, $txt .1%, rgba($green1,1) 60%);
+      }
+    }
+    .led{
+      background-color: $green;
+    }
+  }
+  .yellow {
+    &.on{
+      box-shadow: 0 0 22px 3px $yellow1;
+      .led {
+        background-color: $yellow1;
+        background-image: radial-gradient( 60% 25%, circle, $txt .1%, rgba($yellow1,1) 60%);
+      }
+    }
+    .led{
+      background-color: $yellow;
+    }
+  }
+  .red {
+    &.on{
+      box-shadow: 0 0 22px 3px $red1;
+      .led {
+        background-color: $red1;
+        background-image: radial-gradient( 60% 25%, circle, $txt .1%, rgba($red1,1) 60%);
+      }
+    }
+    .led{
+      background-color: $red;
+    }
+  }
+}
+
+/* section "RELATIONER" styles */
+.relationship {
+  min-width: 340px;
+  &>.jcf-scrollable {
+    height: 160px;
+    width: 270px !important;
+  }
+  .add-user {
+    margin-top: 10px;
+  }
+  .popup {
+    top: 63px;
+  }
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  li {
+    margin-bottom: 9px; 
+  }
+}
+
+/* section "PERSONLIGHETSTYP" styles */
+.person {
+  min-width: 325px;
+  background: $txt radial-gradient( 55% 55%, $bggrad3 20%, $bggrad4 120%);
+  box-shadow: inset -1px -1px 1px 1px rgba($txt3, 0.5), inset 1px 1px 1px 1px rgba($txt, 0.5);
+  color: $txt3;
+  font-size: 10.5px;
+  .jcf-scrollable {
+    width: 255px !important;
+    height: 208px !important;
+  }
+  h1 {
+    color: $txt3;
+  }
+  article header {
+    font-size: 12px;
+    img {
+      margin-bottom: 7px;
+    }
+    h2 {
+      margin-left: 5px;
+      margin-bottom: 0px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    p {
+      margin-left: 5px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+/* section "GRAPH IMG" styles */
+.graf {
+  width: 656px;
+}
+
+.graf-content {
+  position: relative;
+  overflow: hidden;
+  .dot  {
+    position: absolute;
+    top: 35%;
+    left: 71%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: $graf;
+    background-clip: padding-box;
+    border-radius: 50%;
+    border: 4px solid rgba($txt, .5);
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1px);
+      width: 2px;
+      height: 250px;
+      background: url(../images/graf-dot.png) top repeat-y;
+    }
+  }
+}
+
+.scale {
+  list-style: none;
+  padding: 0;
+  margin: 7px -10px 0 -3px;
+  li {
+    display: inline-block;
+    font-size: 12px;
+    opacity: .48;
+    margin-right: 21px;
+    width: 16px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.active {
+      color: $graf;
+      opacity: 1;
+    }
+  }
+}
+
+/* section "FORDON", section "ERBJUDANDEN", section "PRODUKTER" styles */
+.auto, .deals, .products {
+  margin-bottom: 16px;
+  .wrap-section {
+    padding: 16px 19px;
+  }
+}
+
+/* section "FORDON" styles */
+.auto {
+  .slide:last-child{
+    .lightbox{
+      display: flex;
+      height: 58px;
+      align-items: center;
+    }
+    .glyphicons {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: $btn;
+      font-size: 12px;
+      margin-left: 10px;
+      margin-right: 6px;
+      text-align: center;
+    }
+  }
+}
+
+/* Button wraper styles */
+.box-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    margin-right: 25px;
+  }
+  .attach-btn {
+    background-color: $txt3;
+    margin-right: 0;
+    padding: 10px 20px 10px 30px;
+    &:hover {
+      background-color: lighten($txt3, 14%);
+    }
+    img {
+      margin-left: 35px;
+    }
+  }
+}
+
+/* section "Överblick FÖRSÄKRINGAR" styles */
+.insurance {
+  height: 100%;
+  .row {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+    padding: 40px 5px 30px;
+    background: linear-gradient(to top, rgba(0,0,0, .35) 0%, rgba(0,0,0, .35) 100%), url(../images/insurance-bg.jpg) center no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 43px 0px rgba(0, 0, 0, 0.51);
+    border-style: solid;
+    border-width: 4px;
+    border-color: $placeholder;
+    border-radius: $br;
+  }
+  .wrap-section {
+    height: 180px;
+    width: 225px;
+    margin: 23px 20px 3px;
+    padding: 25px 26px;
+    background: linear-gradient(151deg, $bggrad2 2%, $bggrad1 50%);
+    box-shadow: inset 1px 1px 1px 2px rgba(255, 255, 255, 0.5), inset -1px -1px 1px 2px rgba(0, 0, 0, 0.5);
+    &.up{
+      transform: translateY(-30px);
+    }
+    h2 {
+      color: $txt;
+      font-weight: 700;
+    }
+    dl {
+      margin-top: 9px;
+      margin-bottom: 20px;
+    }
+    dd b {
+      font-size: 18px;
+    }
+  }
+  .btn {
+    display: block;
+    width: 90px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------------------------------------------------------
+  5. Custom form styles
+   ---------------------------------------------------------*/
+.search-wrap {
+  width: 175px;
+  display: flex;
+  &>input {
+    padding-right: 35px;
+    margin-right: -34px;
+    border-radius: $brinput;
+    width: 100%;
+  }
+}
+
+label.send {
+  background-color: $btn;
+  width: 34px;
+  text-align: center;
+  border-bottom-right-radius: $brinput;
+  border-top-right-radius: $brinput;
+  cursor: pointer;
+  box-shadow: inset 0px -1px 1px 1px rgba(0, 0, 0, 0.5), inset 0px 1px 1px 1px rgba(255, 255, 255, 0.5);
+  transition: background-color $as;
+  &:hover {
+    background-color: darken($btn, 7%);
+  }
+  &:active {
+    box-shadow: none;
+    .glyphicons {
+      transform: translateY(1px);
+    }
+  }
+  input {
+    height: 0 !important;
+    width: 0 !important;
+    border: none;
+    position: absolute;
+    top: -9999px;
+  }
+}
+
+label.for-input {
+  display: inline;
+  font-size: 10px;
+  color: $label;
+  font-weight: 600;
+  input {
+    margin-top: 4px;
+  }
+}
+
+label.repeter {
+  display: block;
+}
+
+.error-massage {
+  display: none;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 600;
+  color: $error;
+}
+
+input.input-error{
+  border-color: $error;
+  box-shadow: inset 0px 0 2px 2px $error;
+  +.send {
+    opacity: .3;
+  }
+}
+
+.form-error {
+  position: relative;
+  .error-massage {
+    display: block;
+    position: absolute;
+    top: 37px;
+  }
+}

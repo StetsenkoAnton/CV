@@ -1,0 +1,80 @@
+// forms
+
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+input[type='url'],
+input[type='date'],
+input[type='number'],
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  box-sizing: border-box;
+  border: none;
+  padding-top: 5px;
+  padding-left: 13px;
+  padding-right: 13px;
+  text-overflow: ellipsis;
+  height: $hinput;
+  border-radius: $brinput;
+  min-width: 50px;
+  box-shadow: inset 0px 1px 5px 0px rgba(0, 0, 0, 0.6);
+  color: $placeholder;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #fefdfd;
+  &:focus {
+    box-shadow: inset 0px 1px 5px 1px rgba($btn, 0.99);
+  }
+  @include placeholder {
+    font-size: 12px;
+    font-weight: 600;
+    color: $placeholder;
+  }
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  &:-webkit-outer-spin-button,
+  &:-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+select, .jcf-select {
+  border: none;
+  width: 100%;
+  color: $txt3;
+  border-radius: $brinput;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+textarea {
+  font-size: 12px;
+  color: $txt5;
+  resize: none;
+  vertical-align: top;
+  background-color: #fefdfd;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='file'],
+input[type='submit'] {
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: none;
+  transition: color $as, background-color $as;
+}
+

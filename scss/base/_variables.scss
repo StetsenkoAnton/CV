@@ -1,0 +1,25 @@
+
+$col-txt: #000;
+$col-border: #000;
+
+$col-bg-body: #eee;
+$col-bg: #fff;
+
+$base-font: 'Arial', sans-serif;
+$base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
+
+// Body
+$base-text-color: $col-txt;
+$base-background-color: $col-bg-body;
+$font-size-base: 14px; // 14/16
+$line-height-base: 1.5;
+$base-font-family: $base-font;
+
+$vertical-rhythm: ($line-height-base * 1em);
+
+$base-min-width: 320px;
+
+// Links
+$base-link-color: #1155cc;
+
+$as: 0.3s;

@@ -1,0 +1,41 @@
+// Colors
+// Color calculator - http://razorjam.github.io/sasscolourfunctioncalculator/
+// Color names - http://name-of-color.com/
+
+$gray: #999;
+$black: #333;
+$white: #fff;
+$light-blue: #39f;
+
+$col-brand1: #0092b3; // blue
+$col-brand2: #672e6c;
+
+$col-txt1: #363636; //dark
+$col-txt2: #606060; //gray
+$col-txt3: #fff; //white
+
+$col-cursor: #3ec7e6;
+
+//$col-bg1: #0092b3; // blue
+$col-bg1: #eee; //gray
+
+$base-font-sans-serif: 'overpass', 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+$base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
+
+// Body
+$base-text-color: $col-txt2;
+$base-background-color: $white;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$base-font-family: $base-font-sans-serif;
+
+$vertical-rhythm: ($line-height-base * 1em);
+
+$base-min-width: 320px;
+
+$btn-color: $col-brand1;
+$btn-background: $col-bg1;
+$btn-padding: 0.4em 0.7em !default;
+$btn-font-size: inherit !default;
+
+$as: 0.3s;

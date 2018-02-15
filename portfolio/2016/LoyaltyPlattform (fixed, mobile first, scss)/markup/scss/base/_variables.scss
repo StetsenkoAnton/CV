@@ -1,0 +1,97 @@
+// Colors
+// Color calculator - http://razorjam.github.io/sasscolourfunctioncalculator/
+// Color names - http://name-of-color.com/
+
+$gray: #999;
+$black: #333;
+$white: #fff;
+$light-blue: #39f;
+
+$txt: #fff;
+$txt2: #878787;
+$txt3: #000;
+$txt4: #414141;
+$txt5: #393939;
+
+$error: #9c1006;
+$dis: #a09f9f;
+$disbtn: #aecbd9;
+$inputerrore: #e4e3e3;
+
+$bggrad1: #000;
+$bggrad2: #222;
+
+$bggrad3: #fff;
+$bggrad4: #a2a2a2;
+
+$bggray: #2c2c2c;
+$bggray2: #333;
+$bggray3: #595959;
+$bgpopup: #e4e3e3;
+
+$scroll: #bfbfbf;
+$scroll2: #737373;
+
+$graf: #ed5b25;
+
+$btn: #2f92c1;
+$btn1: #9cc3d5;
+
+$placeholder: #9d9d9c;
+$label: #66645f;
+
+$green: #004d24;
+$green1: #08b257;
+$yellow: #717100;
+$yellow1: #ffff01;
+$red: #6f0001;
+$red1: #fe0002;
+
+$br: 10px;
+$brinput: 3px;
+$brpopup: 20px;
+
+$hinput: 30px;
+
+$base-font-sans-serif: 'cabin', 'Arial', sans-serif;
+$base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
+
+// Body
+$base-text-color: $txt;
+$base-background-color: #141414;
+$font-size-base: 12px ;
+$line-height-base: 1.16667;
+$base-font-family: $base-font-sans-serif !default;
+
+$vertical-rhythm: ($line-height-base * 1em);
+
+$base-min-width: 320px;
+
+// Liks
+$base-link-color: $light-blue;
+
+// Buttons 
+$btn-color: $white !default;
+$btn-background: $black !default;
+$btn-padding: 0.4em 0.7em !default;
+$btn-font-size: inherit !default;
+
+// Forms
+$form-element-padding: $btn-padding !default;
+$form-element-border-color: $gray !default;
+$form-element-focus-border-color: $black !default;
+$placeholder-color: $gray !default;
+
+// Headers
+$h1-font-size: 12px;
+$h2-font-size: 27px !default;
+$h3-font-size: 20px;
+$h4-font-size: 21px;
+$h5-font-size: 16px;
+$h6-font-size: 15px;
+
+$headings-font-family: inherit !default;
+$headings-color: inherit !default;
+
+
+$as: 0.3s;

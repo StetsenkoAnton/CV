@@ -1,0 +1,25 @@
+.video-section {
+	background: $green url(images/bg-shine-gr.svg);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: cover;
+	text-align: center;
+	font-size: 24px;
+  	font-weight: 300;
+  	padding-top: 22px;
+  	padding-bottom: 44px;
+  	p {
+  		max-width: 740px;
+  		margin: 0 auto 28px;
+  		line-height: 1.4583;
+  	}
+}
+
+.brand-video {
+	img, iframe {
+		width: 100%;
+		height: 56vw;
+		margin-bottom: -1px;
+		display: block;
+	}
+}
